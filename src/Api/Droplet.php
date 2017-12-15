@@ -202,11 +202,13 @@ class Droplet extends AbstractApi
     /**
      * @param int $id
      *
+     * @param int $per_page
+     * @param int $page
      * @return ImageEntity[]
      */
-    public function getSnapshots($id)
+    public function getSnapshots($id, $per_page = 200, $page = 1)
     {
-        $snapshots = $this->adapter->get(sprintf('%s/droplets/%d/snapshots?per_page=%d', $this->endpoint, $id, 200));
+        $snapshots = $this->adapter->get(sprintf('%s/droplets/%d/snapshots?per_page=%d&page=%d', $this->endpoint, $id, 200,$page));
 
         $snapshots = json_decode($snapshots);
 
