@@ -34,6 +34,10 @@ class Volume extends AbstractApi
 
         $this->extractMeta($volumes);
 
+        if ($volumes->volumes === null) {
+            return [];
+        }
+
         return array_map(function ($volume) {
             return new VolumeEntity($volume);
         }, $volumes->volumes);
