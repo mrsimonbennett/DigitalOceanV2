@@ -32,6 +32,10 @@ class Snapshot extends AbstractApi
             $query = sprintf('%s&resource_type=%s', $query, $criteria['type']);
         }
 
+        if (isset($criteria['page'])) {
+            $query = sprintf('%s&page=%s', $query, $criteria['page']);
+        }
+
         $snapshots = $this->adapter->get($query);
 
         $snapshots = json_decode($snapshots);

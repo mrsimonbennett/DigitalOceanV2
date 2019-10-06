@@ -134,7 +134,6 @@ class GuzzleHttpAdapter implements AdapterInterface
         $code = (int) $this->response->getStatusCode();
 
         $content = json_decode($body);
-        logger()->error('DO API Error', ['body' => $body, 'headers' => $this->response->getHeaders()]);
 
         throw new HttpException(isset($content->message) ? $content->message : 'Request not processed.', $code);
     }
